@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "sysbench_loader"
+  site-url: "https://daniel-om-weber.github.io/sysbench_loader"
+  description: "Downloads and prepares various system identification benchmark datasets"
+  repo-branch: main
+  repo-url: "https://github.com/daniel-om-weber/sysbench_loader"
