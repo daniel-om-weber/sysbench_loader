@@ -8,7 +8,7 @@ from .core import *
 import nonlinear_benchmarks
 from pathlib import Path
 
-# %% ../nbs/01_workshop.ipynb 5
+# %% ../nbs/01_workshop.ipynb 6
 def wiener_hammerstein(
         save_path: Path #directory the files are written to, created if it does not exist
 ):
@@ -19,7 +19,7 @@ def wiener_hammerstein(
 
     dataset_to_hdf5(train,valid,test,save_path / 'wh')
 
-# %% ../nbs/01_workshop.ipynb 8
+# %% ../nbs/01_workshop.ipynb 9
 def silverbox(
         save_path: Path #directory the files are written to, created if it does not exist
 ):
@@ -30,7 +30,7 @@ def silverbox(
 
     dataset_to_hdf5(train,valid,test,save_path / 'silverbox')
 
-# %% ../nbs/01_workshop.ipynb 11
+# %% ../nbs/01_workshop.ipynb 12
 def cascaded_tanks(
         save_path: Path #directory the files are written to, created if it does not exist
 ):
@@ -41,7 +41,7 @@ def cascaded_tanks(
 
     dataset_to_hdf5(train,valid,test,save_path / 'cascaded_tanks')
 
-# %% ../nbs/01_workshop.ipynb 14
+# %% ../nbs/01_workshop.ipynb 15
 def emps(
         save_path: Path #directory the files are written to, created if it does not exist
 ):

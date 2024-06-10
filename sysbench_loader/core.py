@@ -3,7 +3,7 @@
 # %% auto 0
 __all__ = ['write_dataset', 'write_array', 'iodata_to_hdf5', 'dataset_to_hdf5']
 
-# %% ../nbs/00_core.ipynb 4
+# %% ../nbs/00_core.ipynb 3
 from nonlinear_benchmarks import *
 from pathlib import Path
 import numpy as np
