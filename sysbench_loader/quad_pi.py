@@ -4,7 +4,7 @@
 __all__ = ['quad_pi']
 
 # %% ../nbs/05_quadrotor_pi.ipynb 2
-from nonlinear_benchmarks.utilities import cashed_download, get_tmp_benchmark_directory
+from nonlinear_benchmarks.utilities import get_tmp_benchmark_directory
 from pathlib import Path
 import os
 import h5py

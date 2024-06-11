@@ -4,8 +4,7 @@
 __all__ = ['ship']
 
 # %% ../nbs/03_ship.ipynb 2
-from .core import unrar_download, write_dataset,write_array
-from nonlinear_benchmarks.utilities import get_tmp_benchmark_directory,cashed_download,clear_cache
+from nonlinear_benchmarks.utilities import get_tmp_benchmark_directory
 from pathlib import Path
 import os
 import h5py
