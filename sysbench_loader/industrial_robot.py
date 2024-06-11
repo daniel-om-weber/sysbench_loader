@@ -10,10 +10,9 @@ from pathlib import Path
 import os
 import h5py
 import numpy as np
-
-# %% ../nbs/02_industrial_robot.ipynb 4
 import scipy.io as sio
 
+# %% ../nbs/02_industrial_robot.ipynb 4
 def industrial_robot(
         save_path: Path #directory the files are written to, created if it does not exist
 ):
