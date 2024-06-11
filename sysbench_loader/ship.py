@@ -12,13 +12,14 @@ import h5py
 import numpy as np
 from easyDataverse import Dataverse
 import pandas as pd
+import shutil
 
-# %% ../nbs/03_ship.ipynb 4
+# %% ../nbs/03_ship.ipynb 3
 def ship(
         save_path: Path, #directory the files are written to, created if it does not exist
         remove_download = True
 ):
-    save_path = save_path / 'ship'
+    save_path = Path(save_path) / 'ship'
     download_dir = Path(get_tmp_benchmark_directory()) / 'Ship'
 
     dataverse = Dataverse('https://darus.uni-stuttgart.de/')

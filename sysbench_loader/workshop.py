@@ -13,7 +13,7 @@ from pathlib import Path
 def wiener_hammerstein(
         save_path: Path #directory the files are written to, created if it does not exist
 ):
-    save_path = save_path / 'wh'
+    save_path = Path(save_path) / 'wh'
     train_val, test = nonlinear_benchmarks.WienerHammerBenchMark()
     split_idx = 80_000
     train = train_val[:split_idx]
@@ -25,7 +25,7 @@ def wiener_hammerstein(
 def silverbox(
         save_path: Path #directory the files are written to, created if it does not exist
 ):
-    save_path = save_path / 'silverbox'
+    save_path = Path(save_path) / 'silverbox'
     train_val, test = nonlinear_benchmarks.Silverbox()
     split_idx = 78_000
     train = train_val[:split_idx]
@@ -38,7 +38,7 @@ def cascaded_tanks(
         save_path: Path #directory the files are written to, created if it does not exist
 ):
     'the cascaded_tanks dataset, '
-    save_path = save_path / 'cascaded_tanks'
+    save_path = Path(save_path) / 'cascaded_tanks'
     train_val, test = nonlinear_benchmarks.Cascaded_Tanks()
     train = train_val
     valid = train_val
@@ -50,7 +50,7 @@ def emps(
         save_path: Path #directory the files are written to, created if it does not exist
 ):
     'the emps dataset, '
-    save_path = save_path / 'emps'
+    save_path = Path(save_path) / 'emps'
     train_val, test = nonlinear_benchmarks.EMPS()
     split_idx = 18_000
     train = train_val[:split_idx]
@@ -64,7 +64,7 @@ def noisy_wh(
         save_path: Path #directory the files are written to, created if it does not exist
 ):
     'the wiener hammerstein dataset with process noise'
-    save_path = save_path / 'noisy_wh'
+    save_path = Path(save_path) / 'noisy_wh'
 
     #extract raw .mat files, to preserve filenames necessary for train, valid split
     matfiles = nonlinear_benchmarks.not_splitted_benchmarks.WienerHammerstein_Process_Noise(data_file_locations=True,train_test_split=False)
