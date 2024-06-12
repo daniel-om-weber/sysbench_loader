@@ -4,3 +4,8 @@ website:
       - index.ipynb
       - 00_core.ipynb
       - 01_workshop.ipynb
+      - 02_industrial_robot.ipynb
+      - 03_ship.ipynb
+      - 04_quad_pelican.ipynb
+      - 05_quadrotor_pi.ipynb
+      - 06_broad.ipynb
