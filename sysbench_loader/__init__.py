@@ -1,4 +1,4 @@
-__version__ = "0.0.3"
+__version__ = "0.0.4"
 
 from sysbench_loader.workshop import *
 from sysbench_loader.industrial_robot import *

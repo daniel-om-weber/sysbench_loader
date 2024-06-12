@@ -22,18 +22,20 @@ def robot_mat2hdf(
 
     fs = 10  # Hz
     train_valid_split = 0.8
-    os.makedirs(save_path, exist_ok=True)
+    os.makedirs(save_path / 'test', exist_ok=True)
+    os.makedirs(save_path / 'train', exist_ok=True)
+    os.makedirs(save_path / 'valid', exist_ok=True)
 
     mf = sio.loadmat(mat_path)
     for mode in ['train', 'test']:
         if mode == 'test':
-            with h5py.File(save_path / f'test.hdf5', 'w') as f:
+            with h5py.File(save_path / 'test' / f'test.hdf5', 'w') as f:
                 write_dataset(f, 'dt', np.ones_like(mf[f'time_{mode}'][0]) / fs)
                 write_array(f, 'u', mf[f'u_{mode}'].T)
                 write_array(f, 'y', mf[f'y_{mode}'].T)
         else:
-            with h5py.File(save_path / f'train.hdf5', 'w') as train_f, \
-                h5py.File(save_path / f'valid.hdf5', 'w') as valid_f:
+            with h5py.File(save_path / 'train' / f'train.hdf5', 'w') as train_f, \
+                h5py.File(save_path / 'valid' / f'valid.hdf5', 'w') as valid_f:
                     dt = np.ones_like(mf[f'time_{mode}'][0]) / fs
                     total_entries = len(dt)
                     split_index = int(total_entries * train_valid_split)
