@@ -85,7 +85,7 @@ def quad_pelican(
         save_path: Path, #directory the files are written to, created if it does not exist
         remove_download = False
 ):
-    save_path = Path(save_path) / 'quad_pelican'
+    save_path = Path(save_path)
     url_pelican = 'http://wavelab.uwaterloo.ca/wp-content/uploads/2017/09/AscTec_Pelican_Flight_Dataset.mat'
    
     tmp_dir = cashed_download(url_pelican,'Quad_pelican',zipped=False)

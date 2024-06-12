@@ -18,7 +18,7 @@ def ship(
         save_path: Path, #directory the files are written to, created if it does not exist
         remove_download = True
 ):
-    save_path = Path(save_path) / 'ship'
+    save_path = Path(save_path)
     download_dir = Path(get_tmp_benchmark_directory()) / 'Ship'
 
     dataverse = Dataverse('https://darus.uni-stuttgart.de/')

@@ -16,7 +16,7 @@ from io import BytesIO
 def broad(
         save_path: Path, #directory the files are written to, created if it does not exist
 ):
-    save_path = Path(save_path) / 'broad'
+    save_path = Path(save_path)
 
     idxs_valid = ['14_', '39_', '21_']
     idxs_test = ['29_', '22_', '35_']

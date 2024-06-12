@@ -290,7 +290,7 @@ def quad_pi(
         save_path: Path, #directory the files are written to, created if it does not exist
         remove_download = False
 ):
-    save_path = Path(save_path) / 'quad_pi'
+    save_path = Path(save_path)
 
 
     download_dir = Path(get_tmp_benchmark_directory()) / 'Quadrotor_pi/' 
