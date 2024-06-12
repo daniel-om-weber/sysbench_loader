@@ -57,7 +57,8 @@ def dataset_to_hdf5(train:tuple, #tuple of Input_output_data for training
                     save_path: Path #directory the files are written to, created if it does not exist
                     ):
     'Save a dataset consisting of training, validation, and test set in hdf5 format in seperate subdirectories'
-
+    save_path = Path(save_path)
+    
     dict_data = {'train':train,
                  'valid':valid,
                  'test':test}
