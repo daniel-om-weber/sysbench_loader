@@ -25,7 +25,7 @@ def silverbox(
         save_path: Path #directory the files are written to, created if it does not exist
 ):
     train_val, test = nonlinear_benchmarks.Silverbox()
-    split_idx = 78_000
+    split_idx = 50_000
     train = train_val[:split_idx]
     valid = train_val[split_idx:]
 
