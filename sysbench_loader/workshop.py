@@ -66,7 +66,7 @@ def noisy_wh(
 
     for file in matfiles:
         f_path = Path(file)
-        save_path = Path(file)
+        save_path = Path(save_path)
 
         if 'Test' in f_path.stem:
             hdf_path = save_path / 'test'
