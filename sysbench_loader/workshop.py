@@ -11,7 +11,7 @@ import nonlinear_benchmarks
 from nonlinear_benchmarks.utilities import Input_output_data
 from pathlib import Path
 
-# %% ../nbs/01_workshop.ipynb 6
+# %% ../nbs/01_workshop.ipynb 5
 def wiener_hammerstein(
         save_path: Path #directory the files are written to, created if it does not exist
 ):
@@ -22,7 +22,7 @@ def wiener_hammerstein(
 
     dataset_to_hdf5(train,valid,test,save_path)
 
-# %% ../nbs/01_workshop.ipynb 9
+# %% ../nbs/01_workshop.ipynb 8
 def silverbox(
         save_path: Path #directory the files are written to, created if it does not exist
 ):
@@ -33,7 +33,7 @@ def silverbox(
 
     dataset_to_hdf5(train,valid,test,save_path)
 
-# %% ../nbs/01_workshop.ipynb 12
+# %% ../nbs/01_workshop.ipynb 11
 def cascaded_tanks(
         save_path: Path #directory the files are written to, created if it does not exist
 ):
@@ -44,7 +44,7 @@ def cascaded_tanks(
 
     dataset_to_hdf5(train,valid,test,save_path)
 
-# %% ../nbs/01_workshop.ipynb 15
+# %% ../nbs/01_workshop.ipynb 14
 def emps(
         save_path: Path #directory the files are written to, created if it does not exist
 ):
@@ -56,7 +56,7 @@ def emps(
 
     dataset_to_hdf5(train,valid,test,save_path)
 
-# %% ../nbs/01_workshop.ipynb 18
+# %% ../nbs/01_workshop.ipynb 17
 from scipy.io import loadmat
 def noisy_wh(
         save_path: Path #directory the files are written to, created if it does not exist

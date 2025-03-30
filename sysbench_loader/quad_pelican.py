@@ -10,10 +10,9 @@ from nonlinear_benchmarks.utilities import cashed_download
 from pathlib import Path
 import os
 import h5py
-import numpy as np
 import scipy.io as sio
 
-# %% ../nbs/04_quad_pelican.ipynb 4
+# %% ../nbs/04_quad_pelican.ipynb 3
 pelican_fnames_train = ['hdf5flight24.hdf5',
                         'hdf5flight25.hdf5',
                         'hdf5flight38.hdf5',
@@ -82,7 +81,7 @@ def get_parent_dir(f_name: str # name of the flight
     else:
         return ValueError(f'Filename {f_name} not recognized!')
 
-# %% ../nbs/04_quad_pelican.ipynb 5
+# %% ../nbs/04_quad_pelican.ipynb 4
 def quad_pelican(
         save_path: Path, #directory the files are written to, created if it does not exist
         remove_download = False
