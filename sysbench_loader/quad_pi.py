@@ -290,6 +290,7 @@ def extract_hdf_from_bag(bag_path,save_path):
 # %% ../nbs/05_quadrotor_pi.ipynb 5
 def quad_pi(
         save_path: Path, #directory the files are written to, created if it does not exist
+        force_download: bool = False, # force download the dataset
         remove_download = False
 ):
     save_path = Path(save_path)
@@ -299,7 +300,7 @@ def quad_pi(
     os.makedirs(download_dir, exist_ok=True)
 
     url = 'https://drive.google.com/file/d/1b1PFSBlKTdrlTIurYNpTJWWEx1KIJzuR/view?usp=sharing'
-    gdown.cached_download(url, str(download_dir / 'bags.zip'), postprocess=gdown.extractall,fuzzy=True)
+    gdown.cached_download(url, str(download_dir / 'bags.zip'), postprocess=gdown.extractall,fuzzy=True,force=force_download)
 
     bag_paths = glob.glob(str(download_dir / "*.bag"))
     for bag_path in bag_paths:

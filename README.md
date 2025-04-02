@@ -87,8 +87,3 @@ to 32-bit float (f4) for consistency
 
 This standardized format makes it easy to use these datasets with any
 machine learning framework that supports HDF5 files.
-
-## License
-
-This project is licensed under the Apache 2.0 License - see the LICENSE
-file for details.

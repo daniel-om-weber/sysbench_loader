@@ -10,13 +10,13 @@ from .core import write_array
 from pathlib import Path
 import os
 import h5py
-import shutil
 import requests
 from io import BytesIO
 
 # %% ../nbs/06_broad.ipynb 3
 def broad(
         save_path: Path, #directory the files are written to, created if it does not exist
+        force_download: bool = True, # force download the dataset
 ):
     save_path = Path(save_path)
 

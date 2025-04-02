@@ -53,13 +53,14 @@ def robot_mat2hdf(
 
 # %% ../nbs/02_industrial_robot.ipynb 4
 def robot_forward(
-        save_path: Path #directory the files are written to, created if it does not exist
+        save_path: Path, #directory the files are written to, created if it does not exist
+        force_download: bool = False # force download the dataset
 ):
     save_path = Path(save_path)
     url_robot = "https://fdm-fallback.uni-kl.de/TUK/FB/MV/WSKL/0001/Robot_Identification_Benchmark_Without_Raw_Data.rar"
     # unrar_download(url_robot,tmp_dir)
 
-    tmp_dir = cashed_download(url_robot,'Industrial_robot')
+    tmp_dir = cashed_download(url_robot,'Industrial_robot',force_download=force_download)
     tmp_dir = Path(tmp_dir)
 
     path_forward = tmp_dir / "forward_identification_without_raw_data.mat"
@@ -69,13 +70,14 @@ def robot_forward(
 
 # %% ../nbs/02_industrial_robot.ipynb 6
 def robot_inverse(
-        save_path: Path #directory the files are written to, created if it does not exist
+        save_path: Path, #directory the files are written to, created if it does not exist
+        force_download: bool = False # force download the dataset
 ):
     save_path = Path(save_path)
     url_robot = "https://fdm-fallback.uni-kl.de/TUK/FB/MV/WSKL/0001/Robot_Identification_Benchmark_Without_Raw_Data.rar"
     # unrar_download(url_robot,tmp_dir)
 
-    tmp_dir = cashed_download(url_robot,'Industrial_robot')
+    tmp_dir = cashed_download(url_robot,'Industrial_robot',force_download=force_download)
     tmp_dir = Path(tmp_dir)
 
     path_inverse = tmp_dir / "inverse_identification_without_raw_data.mat"

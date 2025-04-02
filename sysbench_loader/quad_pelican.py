@@ -84,12 +84,13 @@ def get_parent_dir(f_name: str # name of the flight
 # %% ../nbs/04_quad_pelican.ipynb 4
 def quad_pelican(
         save_path: Path, #directory the files are written to, created if it does not exist
+        force_download: bool = False, # force download the dataset
         remove_download = False
 ):
     save_path = Path(save_path)
     url_pelican = 'http://wavelab.uwaterloo.ca/wp-content/uploads/2017/09/AscTec_Pelican_Flight_Dataset.mat'
    
-    tmp_dir = cashed_download(url_pelican,'Quad_pelican',zipped=False,force_download=True)
+    tmp_dir = cashed_download(url_pelican,'Quad_pelican',zipped=False,force_download=force_download)
     downloaded_fname = Path(tmp_dir) / Path(url_pelican).name
     
     def write_signal(fname, sname, signal):

@@ -18,10 +18,15 @@ import shutil
 # %% ../nbs/03_ship.ipynb 3
 def ship(
         save_path: Path, #directory the files are written to, created if it does not exist
+        force_download: bool = False, # force download the dataset
         remove_download = True
 ):
     save_path = Path(save_path)
     download_dir = Path(get_tmp_benchmark_directory()) / 'Ship'
+
+    if force_download and download_dir.exists():
+        print(f"Force reload: Removing existing directory: {download_dir}")
+        shutil.rmtree(download_dir)
 
     dataverse = Dataverse('https://darus.uni-stuttgart.de/')
     dataverse.load_dataset(
