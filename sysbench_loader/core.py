@@ -55,15 +55,18 @@ def iodata_to_hdf5(iodata:Input_output_data, # data to save to file
 def dataset_to_hdf5(train:tuple, #tuple of Input_output_data for training
                     valid:tuple,#tuple of Input_output_data for validation
                     test:tuple,#tuple of Input_output_data for test
-                    save_path: Path #directory the files are written to, created if it does not exist
+                    save_path: Path, #directory the files are written to, created if it does not exist
+                    train_valid: tuple = None # optional tuple of unsplit Input_output_data for training and validation
                     ):
     'Save a dataset consisting of training, validation, and test set in hdf5 format in seperate subdirectories'
     save_path = Path(save_path)
     
     dict_data = {'train':train,
                  'valid':valid,
-                 'test':test}
+                 'test':test,
+                 'train_valid':train_valid}
     for subset,ds_entries in dict_data.items():
+        if ds_entries is None: continue
         if isinstance(ds_entries,tuple):
             if not isinstance(ds_entries[0],Input_output_data): raise ValueError(f'Data has to be stored in tuples of Input_output_data. Got {type(ds_entries[0])}')
         else:
@@ -73,6 +76,7 @@ def dataset_to_hdf5(train:tuple, #tuple of Input_output_data for training
     os.makedirs(save_path,exist_ok=True)
 
     for subset,ds_entries in dict_data.items():
+        if ds_entries is None: continue
         for idx,iodata in enumerate(ds_entries):
             iodata_to_hdf5(iodata,save_path / subset,f'{subset}_{idx}')
 
