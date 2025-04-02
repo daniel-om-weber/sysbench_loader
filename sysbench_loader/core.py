@@ -47,9 +47,14 @@ def iodata_to_hdf5(iodata:Input_output_data, # data to save to file
     with h5py.File(hdf_path,'w') as f:
         write_array(f,'u',u)
         write_array(f,'y',y)
+        
+        # Save sampling_rate and init_window_size as attributes
+        if iodata.sampling_time is not None:
+            f.attrs['fs'] = 1/iodata.sampling_time
+        if iodata.state_initialization_window_length is not None:
+            f.attrs['init_sz'] = iodata.state_initialization_window_length
 
     return hdf_path 
-
 
 # %% ../nbs/00_core.ipynb 20
 def dataset_to_hdf5(train:tuple, #tuple of Input_output_data for training

@@ -35,6 +35,8 @@ def robot_mat2hdf(
                 write_dataset(f, 'dt', np.ones_like(mf[f'time_{mode}'][0]) / fs)
                 write_array(f, 'u', mf[f'u_{mode}'].T)
                 write_array(f, 'y', mf[f'y_{mode}'].T)
+                f.attrs['fs'] = fs
+
         else:
             with h5py.File(save_path / 'train' / f'train.hdf5', 'w') as train_f, \
                 h5py.File(save_path / 'valid' / f'valid.hdf5', 'w') as valid_f:
@@ -45,10 +47,12 @@ def robot_mat2hdf(
                     write_dataset(train_f, 'dt', dt[:split_index])
                     write_array(train_f, 'u', mf[f'u_{mode}'][:,:split_index].T)
                     write_array(train_f, 'y', mf[f'y_{mode}'][:,:split_index].T)
+                    train_f.attrs['fs'] = fs  
                     
                     write_dataset(valid_f, 'dt', dt[split_index:])
                     write_array(valid_f, 'u', mf[f'u_{mode}'][:,split_index:].T)
                     write_array(valid_f, 'y', mf[f'y_{mode}'][:,split_index:].T)
+                    valid_f.attrs['fs'] = fs  
     
 
 # %% ../nbs/02_industrial_robot.ipynb 4
