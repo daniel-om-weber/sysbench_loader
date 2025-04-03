@@ -1,0 +1,222 @@
+[
+  {
+    "objectID": "index.html#sysbench-loader",
+    "href": "index.html#sysbench-loader",
+    "title": "sysbench_loader",
+    "section": "Sysbench Loader",
+    "text": "Sysbench Loader\nThe sysbench_loader package provides a collection of standardized data loaders for common system identification benchmark datasets. It downloads, prepares, and converts various benchmark datasets into a unified HDF5 format, making them readily available for machine learning and system identification applications.",
+    "crumbs": [
+      "Sysbench Loader"
+    ]
+  },
+  {
+    "objectID": "index.html#install",
+    "href": "index.html#install",
+    "title": "sysbench_loader",
+    "section": "Install",
+    "text": "Install\npip install sysbench_loader",
+    "crumbs": [
+      "Sysbench Loader"
+    ]
+  },
+  {
+    "objectID": "index.html#features",
+    "href": "index.html#features",
+    "title": "sysbench_loader",
+    "section": "Features",
+    "text": "Features\n\nDownloads benchmark datasets from various sources\nConverts data to standardized HDF5 format\nSplits data into train/validation/test sets\nProvides consistent interface across different benchmarks\nHandles setup and cleanup of downloaded files",
+    "crumbs": [
+      "Sysbench Loader"
+    ]
+  },
+  {
+    "objectID": "index.html#available-benchmarks",
+    "href": "index.html#available-benchmarks",
+    "title": "sysbench_loader",
+    "section": "Available Benchmarks",
+    "text": "Available Benchmarks\nThe package includes loaders for the following benchmark datasets:\n\nNonlinear Systemidentification Workshop Benchmarks\n\nWiener-Hammerstein: Electronic nonlinear system\nSilverbox: Electronic circuit with nonlinear feedback\nCascaded Tanks: Fluid dynamics system\nEMPS: Electro-Mechanical Positioning System\nNoisy Wiener-Hammerstein: WH system with process noise\n\n\n\nRobotic Systems\n\nIndustrial Robot: Forward and inverse identification models\nQuad Pelican: Quadrotor UAV system\nQuad Pi: Raspberry Pi-based quadrotor system\n\n\n\nOther Systems\n\nShip: Ship propulsion and steering dynamics\nBroad: Broad spectrum system identification dataset\n\n\n# Basic usage\nimport sysbench_loader\nfrom pathlib import Path\n\n# Example: Download a single dataset\n# Note: Always use a Path object, not a string\nsave_path = Path('./tmp/wh')\nsysbench_loader.workshop.wiener_hammerstein(save_path)\n\n\n# List all available dataset loaders\nsysbench_loader.all_dataset_loader\n\n[&lt;function sysbench_loader.workshop.wiener_hammerstein(save_path: pathlib.Path)&gt;,\n &lt;function sysbench_loader.workshop.silverbox(save_path: pathlib.Path)&gt;,\n &lt;function sysbench_loader.workshop.cascaded_tanks(save_path: pathlib.Path)&gt;,\n &lt;function sysbench_loader.workshop.emps(save_path: pathlib.Path)&gt;,\n &lt;function sysbench_loader.workshop.noisy_wh(save_path: pathlib.Path)&gt;,\n &lt;function sysbench_loader.industrial_robot.robot_forward(save_path: pathlib.Path)&gt;,\n &lt;function sysbench_loader.industrial_robot.robot_inverse(save_path: pathlib.Path)&gt;,\n &lt;function sysbench_loader.ship.ship(save_path: pathlib.Path, remove_download=True)&gt;,\n &lt;function sysbench_loader.quad_pelican.quad_pelican(save_path: pathlib.Path, remove_download=False)&gt;,\n &lt;function sysbench_loader.quad_pi.quad_pi(save_path: pathlib.Path, remove_download=False)&gt;,\n &lt;function sysbench_loader.broad.broad(save_path: pathlib.Path)&gt;]",
+    "crumbs": [
+      "Sysbench Loader"
+    ]
+  },
+  {
+    "objectID": "index.html#hdf5-data-format",
+    "href": "index.html#hdf5-data-format",
+    "title": "sysbench_loader",
+    "section": "HDF5 Data Format",
+    "text": "HDF5 Data Format\nEach dataset is converted to a standard HDF5 format with the following structure: - Train/valid/test split in separate directories - Input data stored as ‘u0’, ‘u1’, etc. (one per input dimension) - Output data stored as ‘y0’, ‘y1’, etc. (one per output dimension) - Data converted to 32-bit float (f4) for consistency\nThis standardized format makes it easy to use these datasets with any machine learning framework that supports HDF5 files.",
+    "crumbs": [
+      "Sysbench Loader"
+    ]
+  },
+  {
+    "objectID": "quad_pelican.html",
+    "href": "quad_pelican.html",
+    "title": "Quadrotor Pelican Dataset",
+    "section": "",
+    "text": "source\n\nquad_pelican\n\n quad_pelican (save_path:pathlib.Path, force_download:bool=False,\n               remove_download=False)\n\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nsave_path\nPath\n\ndirectory the files are written to, created if it does not exist\n\n\nforce_download\nbool\nFalse\nforce download the dataset\n\n\nremove_download\nbool\nFalse\n\n\n\n\n\ntmp_dir = Path('./tmp')\nquad_pelican(tmp_dir / 'quad_pelican')",
+    "crumbs": [
+      "Quadrotor Pelican Dataset"
+    ]
+  },
+  {
+    "objectID": "ship.html",
+    "href": "ship.html",
+    "title": "Ship Dataset",
+    "section": "",
+    "text": "source\n\nship\n\n ship (save_path:pathlib.Path, force_download:bool=False,\n       remove_download=True)\n\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nsave_path\nPath\n\ndirectory the files are written to, created if it does not exist\n\n\nforce_download\nbool\nFalse\nforce download the dataset\n\n\nremove_download\nbool\nTrue\n\n\n\n\n\ntmp_dir = Path('./tmp')\nship(tmp_dir / 'ship')\n\n\n\n\n\n\n\n\n🎉 Connected to 'https://darus.uni-stuttgart.de/'\n\n\n\n\n\n\nFetching dataset 'doi:10.18419/darus-2905' from 'https://darus.uni-stuttgart.de/'\n\n\n\n\n╭────────────────────────────────────────── Dataset Information ──────────────────────────────────────────╮\n│ Title: A Simulated 4-DOF Ship Motion Dataset for System Identification under Environmental Disturbances │\n│ Version: latest                                                                                         │\n│ Files: 126                                                                                              │\n╰─────────────────────────────────────────────────────────────────────────────────────────────────────────╯\n\n\n\n\n\n\nDownloading files\n\n\n\n\n\n\n\n╰── ✅ Done",
+    "crumbs": [
+      "Ship Dataset"
+    ]
+  },
+  {
+    "objectID": "workshop.html",
+    "href": "workshop.html",
+    "title": "Nonlinear Benchmark Workshop Datasets",
+    "section": "",
+    "text": "tmp_dir = Path('./tmp')",
+    "crumbs": [
+      "Nonlinear Benchmark Workshop Datasets"
+    ]
+  },
+  {
+    "objectID": "workshop.html#wiener-hammerstein-dataset",
+    "href": "workshop.html#wiener-hammerstein-dataset",
+    "title": "Nonlinear Benchmark Workshop Datasets",
+    "section": "Wiener Hammerstein Dataset",
+    "text": "Wiener Hammerstein Dataset\n\ndef plot_workshop_data(dataset_function,max_sequences=3):\n    train_val, test = dataset_function(always_return_tuples_of_datasets=True)\n    fig, axs = plt.subplots(2, 1, figsize=(12, 8), sharex=True)\n    # Plot training/validation data\n    for i, data in enumerate(train_val[:max_sequences]):\n        axs[0].plot(data.u, alpha=0.7, label=f'Train {i+1}')\n        axs[1].plot(data.y, alpha=0.7, label=f'Train {i+1}')\n\n    # Plot test data\n    for i, data in enumerate(test[:max_sequences]):\n        axs[0].plot(data.u, ls='--', alpha=0.8, label=f'Test {i+1}')\n        axs[1].plot(data.y, ls='--', alpha=0.8, label=f'Test {i+1}')\n\n    axs[0].set_title('Input Sequences')\n    axs[0].set_ylabel('Amplitude')\n    axs[0].legend()\n\n    axs[1].set_title('Output Sequences')\n    axs[1].set_xlabel('Sample')\n    axs[1].set_ylabel('Amplitude')\n    axs[1].legend()\n\n    plt.tight_layout()\nplot_workshop_data(nonlinear_benchmarks.WienerHammerBenchMark)\n\n\n\n\n\n\n\n\n\nsource\n\nwiener_hammerstein\n\n wiener_hammerstein (save_path:pathlib.Path, force_download:bool=False,\n                     save_train_valid:bool=False, split_idx:int=80000)\n\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nsave_path\nPath\n\ndirectory the files are written to, created if it does not exist\n\n\nforce_download\nbool\nFalse\nforce download the dataset\n\n\nsave_train_valid\nbool\nFalse\nsave unsplitted train and valid datasets in ‘train_valid’ subdirectory\n\n\nsplit_idx\nint\n80000\nsplit index for train and valid datasets\n\n\n\n\nwiener_hammerstein(tmp_dir / 'wh' )\nwiener_hammerstein(tmp_dir / 'wh' ,save_train_valid=True)",
+    "crumbs": [
+      "Nonlinear Benchmark Workshop Datasets"
+    ]
+  },
+  {
+    "objectID": "workshop.html#silverbox-dataset",
+    "href": "workshop.html#silverbox-dataset",
+    "title": "Nonlinear Benchmark Workshop Datasets",
+    "section": "Silverbox Dataset",
+    "text": "Silverbox Dataset\n\nplot_workshop_data(nonlinear_benchmarks.Silverbox)\n\n\n\n\n\n\n\n\n\nsource\n\nsilverbox\n\n silverbox (save_path:pathlib.Path, force_download:bool=False,\n            save_train_valid:bool=False, split_idx:int=50000)\n\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nsave_path\nPath\n\ndirectory the files are written to, created if it does not exist\n\n\nforce_download\nbool\nFalse\nforce download the dataset\n\n\nsave_train_valid\nbool\nFalse\nsave unsplitted train and valid datasets in ‘train_valid’ subdirectory\n\n\nsplit_idx\nint\n50000\nsplit index for train and valid datasets\n\n\n\n\nsilverbox(tmp_dir / 'silverbox')",
+    "crumbs": [
+      "Nonlinear Benchmark Workshop Datasets"
+    ]
+  },
+  {
+    "objectID": "workshop.html#cascaded-tanks-dataset",
+    "href": "workshop.html#cascaded-tanks-dataset",
+    "title": "Nonlinear Benchmark Workshop Datasets",
+    "section": "Cascaded Tanks Dataset",
+    "text": "Cascaded Tanks Dataset\n\nplot_workshop_data(nonlinear_benchmarks.Cascaded_Tanks)\n\n\n\n\n\n\n\n\n\nsource\n\ncascaded_tanks\n\n cascaded_tanks (save_path:pathlib.Path, force_download:bool=False,\n                 save_train_valid:bool=False, split_idx:int=160)\n\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nsave_path\nPath\n\ndirectory the files are written to, created if it does not exist\n\n\nforce_download\nbool\nFalse\nforce download the dataset\n\n\nsave_train_valid\nbool\nFalse\nsave unsplitted train and valid datasets in ‘train_valid’ subdirectory\n\n\nsplit_idx\nint\n160\nsplit index for train and valid datasets\n\n\n\n\ncascaded_tanks(tmp_dir  / 'cascaded_tanks' )",
+    "crumbs": [
+      "Nonlinear Benchmark Workshop Datasets"
+    ]
+  },
+  {
+    "objectID": "workshop.html#emps-dataset",
+    "href": "workshop.html#emps-dataset",
+    "title": "Nonlinear Benchmark Workshop Datasets",
+    "section": "EMPS Dataset",
+    "text": "EMPS Dataset\n\nplot_workshop_data(nonlinear_benchmarks.EMPS)\n\n\n\n\n\n\n\n\n\nsource\n\nemps\n\n emps (save_path:pathlib.Path, force_download:bool=False,\n       save_train_valid:bool=False, split_idx:int=18000)\n\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nsave_path\nPath\n\ndirectory the files are written to, created if it does not exist\n\n\nforce_download\nbool\nFalse\nforce download the dataset\n\n\nsave_train_valid\nbool\nFalse\nsave unsplitted train and valid datasets in ‘train_valid’ subdirectory\n\n\nsplit_idx\nint\n18000\nsplit index for train and valid datasets\n\n\n\n\nemps(tmp_dir  / 'emps')",
+    "crumbs": [
+      "Nonlinear Benchmark Workshop Datasets"
+    ]
+  },
+  {
+    "objectID": "workshop.html#noisy-wiener-hammerstein",
+    "href": "workshop.html#noisy-wiener-hammerstein",
+    "title": "Nonlinear Benchmark Workshop Datasets",
+    "section": "Noisy Wiener Hammerstein",
+    "text": "Noisy Wiener Hammerstein\n\nsource\n\nnoisy_wh\n\n noisy_wh (save_path:pathlib.Path, force_download:bool=False,\n           save_train_valid:bool=False)\n\nthe wiener hammerstein dataset with process noise\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nsave_path\nPath\n\ndirectory the files are written to, created if it does not exist\n\n\nforce_download\nbool\nFalse\nforce download the dataset\n\n\nsave_train_valid\nbool\nFalse\nsave unsplitted train and valid datasets in ‘train_valid’ subdirectory\n\n\n\n\nnoisy_wh(tmp_dir / 'noisy_wh' )",
+    "crumbs": [
+      "Nonlinear Benchmark Workshop Datasets"
+    ]
+  },
+  {
+    "objectID": "workshop.html#parallel-wienerhammerstein",
+    "href": "workshop.html#parallel-wienerhammerstein",
+    "title": "Nonlinear Benchmark Workshop Datasets",
+    "section": "Parallel Wienerhammerstein",
+    "text": "Parallel Wienerhammerstein\n\n#ToDo",
+    "crumbs": [
+      "Nonlinear Benchmark Workshop Datasets"
+    ]
+  },
+  {
+    "objectID": "workshop.html#f16",
+    "href": "workshop.html#f16",
+    "title": "Nonlinear Benchmark Workshop Datasets",
+    "section": "F16",
+    "text": "F16\n\n#ToDo",
+    "crumbs": [
+      "Nonlinear Benchmark Workshop Datasets"
+    ]
+  },
+  {
+    "objectID": "workshop.html#coupled-electric-drives",
+    "href": "workshop.html#coupled-electric-drives",
+    "title": "Nonlinear Benchmark Workshop Datasets",
+    "section": "Coupled Electric Drives",
+    "text": "Coupled Electric Drives\n\nplot_workshop_data(nonlinear_benchmarks.CED)\n\n\n\n\n\n\n\n\n\nsource\n\nced\n\n ced (save_path:pathlib.Path, force_download:bool=False,\n      save_train_valid:bool=False, split_idx:int=300)\n\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nsave_path\nPath\n\ndirectory the files are written to, created if it does not exist\n\n\nforce_download\nbool\nFalse\nforce download the dataset\n\n\nsave_train_valid\nbool\nFalse\nsave unsplitted train and valid datasets in ‘train_valid’ subdirectory\n\n\nsplit_idx\nint\n300\nsplit index for train and valid datasets\n\n\n\n\nced(tmp_dir / 'ced' )",
+    "crumbs": [
+      "Nonlinear Benchmark Workshop Datasets"
+    ]
+  },
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "core",
+    "section": "",
+    "text": "First, we evaluate how the datasets are loaded by the nonlinear_benchmarks library",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#workshop-utilities",
+    "href": "core.html#workshop-utilities",
+    "title": "core",
+    "section": "workshop utilities",
+    "text": "workshop utilities\n\ntrain_val, test = nonlinear_benchmarks.WienerHammerBenchMark()\nplt.plot(train_val.y)\ntype(train_val)\n\nnonlinear_benchmarks.utilities.Input_output_data\n\n\n\n\n\n\n\n\n\nThe data is store in a Input_output_data class, which provides customized access. We want to write a function, which exports the underlying data to hdf5 files.\n\nu = train_val.atleast_2d().u\nu.shape\n\n(100000, 1)\n\n\n\nsource\n\nwrite_dataset\n\n write_dataset (group, ds_name:str, data:&lt;built-infunctionarray&gt;,\n                dtype='f4', chunks=None)\n\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\ngroup\n\n\nopened hdf5 group to write the dataset, can be a file or group\n\n\nds_name\nstr\n\nname of the new dataset\n\n\ndata\narray\n\ndata to write to the dataset\n\n\ndtype\nstr\nf4\ndatatype, the data will be converted to\n\n\nchunks\nNoneType\nNone\nchunking of the hdf5 file, enables faster reading and writing of small parts\n\n\n\n\ntmp_dir = Path('./tmp/')\nos.makedirs(tmp_dir,exist_ok=True)\ntmp_file = tmp_dir / 'tmp.hdf5'\nwith h5py.File(tmp_file,'w') as f:\n    write_dataset(f,'u',u)\n\nwith h5py.File(tmp_file,'r') as f:\n    hdf_u = f['u'][:]\n    test_ne(hdf_u.dtype,u.dtype)\n    test_eq(hdf_u,u.astype('f4'))\n\n\nsource\n\n\nwrite_array\n\n write_array (group, ds_name:str, data:&lt;built-infunctionarray&gt;,\n              dtype='f4', chunks=None)\n\nWrites a 2d numpy array rowwise to a hdf5 file.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\ngroup\n\n\nopened hdf5 group to write the dataset, can be a file or group\n\n\nds_name\nstr\n\nname of the new dataset\n\n\ndata\narray\n\ndata to write to the dataset\n\n\ndtype\nstr\nf4\ndatatype, the data will be converted to\n\n\nchunks\nNoneType\nNone\nchunking of the hdf5 file, enables faster reading and writing of small parts\n\n\nReturns\nNone\n\n\n\n\n\n\nwith h5py.File(tmp_file,'w') as f:\n    write_array(f,'u',u)\n\nwith h5py.File(tmp_file,'r') as f:\n    hdf_u = f['u0'][:]\n    test_ne(hdf_u.dtype,u.dtype)\n    test_ne(hdf_u,u.astype('f4'))\n    test_eq(hdf_u[:,None],u.astype('f4'))\n\n\nsource\n\n\niodata_to_hdf5\n\n iodata_to_hdf5 (iodata:nonlinear_benchmarks.utilities.Input_output_data,\n                 hdf_dir:pathlib.Path, f_name:str=None)\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\niodata\nInput_output_data\n\ndata to save to file\n\n\nhdf_dir\nPath\n\nExport directory for hdf5 files\n\n\nf_name\nstr\nNone\nname of hdf5 file without ‘.hdf5’ ending\n\n\n\n\nfname = iodata_to_hdf5(train_val,tmp_dir)\n\nwith h5py.File(fname,'r') as f:\n    hdf_u = f['u0'][:]\n    hdf_y = f['y0'][:]\n    test_eq(hdf_u[:,None],train_val.atleast_2d().u.astype('f4'))\n    test_eq(hdf_y[:,None],train_val.atleast_2d().y.astype('f4'))\n\nLet us evaluate how the general shape of the downloaded datasets looks like\n\nfor bench in nonlinear_benchmarks.all_splitted_benchmarks:\n    train,test = bench(atleast_2d=True,always_return_tuples_of_datasets=True)\n    print(type(train))\n    print(type(train[0]))\n    break\n\n&lt;class 'tuple'&gt;\n&lt;class 'nonlinear_benchmarks.utilities.Input_output_data'&gt;\n\n\nWith the correct flags set, all datasets have a consistent training and test tuple of one or more elements of type Input_output_data. We will transform that in a training, validation and test tuple, which we will then save with a single function.\n\n# for bench in nonlinear_benchmarks.all_not_splitted_benchmarks:\n#     train = bench()\n#     if len(train) == 2:\n#         train, test = train\n#         # print('\\n'.join(map(str,train)))\n#         if isinstance(train,list):\n#             print(len(train))\n#             print(train[0].name)\n\nOnly the datasets in nonlinear_benchmarks.all_splitted_benchmarks have a consistent output form. The other benchmarks have random splits\n\nsource\n\n\ndataset_to_hdf5\n\n dataset_to_hdf5 (train:tuple, valid:tuple, test:tuple,\n                  save_path:pathlib.Path, train_valid:tuple=None)\n\nSave a dataset consisting of training, validation, and test set in hdf5 format in seperate subdirectories\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\ntrain\ntuple\n\ntuple of Input_output_data for training\n\n\nvalid\ntuple\n\ntuple of Input_output_data for validation\n\n\ntest\ntuple\n\ntuple of Input_output_data for test\n\n\nsave_path\nPath\n\ndirectory the files are written to, created if it does not exist\n\n\ntrain_valid\ntuple\nNone\noptional tuple of unsplit Input_output_data for training and validation\n\n\n\n\ntrain_val, test = nonlinear_benchmarks.WienerHammerBenchMark()\nsplit_idx = 90_000\ntrain = train_val[:split_idx]\nvalid = train_val[split_idx:]\ntest = test\n\n\ndataset_to_hdf5(train,valid,test,tmp_dir)\ndataset_to_hdf5((train,),valid,test,tmp_dir)",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#download-utilities",
+    "href": "core.html#download-utilities",
+    "title": "core",
+    "section": "Download Utilities",
+    "text": "Download Utilities\n\nsource\n\nunzip_download\n\n unzip_download (url:str, extract_dir='.')\n\ndownloads a zip archive to ram and extracts it\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nurl\nstr\n\nurl to file to download\n\n\nextract_dir\nstr\n.\ndirectory the archive is extracted to\n\n\n\n\nsource\n\n\nunrar_download\n\n unrar_download (url:str, extract_dir='.')\n\ndownloads a rar archive to ram and extracts it\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nurl\nstr\n\nurl to file to download\n\n\nextract_dir\nstr\n.\ndirectory the archive is extracted to\n\n\n\n\nsource\n\n\ndownload\n\n download (url:str, target_dir='.')\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nurl\nstr\n\nurl to file to download\n\n\ntarget_dir\nstr\n.\n\n\n\n\n\n# #| hide\n# import shutil\n# #clean temporary hdf5 file\n# shutil.rmtree(tmp_dir)",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "industrial_robot.html",
+    "href": "industrial_robot.html",
+    "title": "Industrial Robot Dataset",
+    "section": "",
+    "text": "source\n\nrobot_forward\n\n robot_forward (save_path:pathlib.Path, force_download:bool=False)\n\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nsave_path\nPath\n\ndirectory the files are written to, created if it does not exist\n\n\nforce_download\nbool\nFalse\nforce download the dataset\n\n\n\n\ntmp_dir = Path('./tmp' )\nrobot_forward(tmp_dir / 'robot_forward')\n\n\nsource\n\n\nrobot_inverse\n\n robot_inverse (save_path:pathlib.Path, force_download:bool=False)\n\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nsave_path\nPath\n\ndirectory the files are written to, created if it does not exist\n\n\nforce_download\nbool\nFalse\nforce download the dataset\n\n\n\n\ntmp_dir = Path('./tmp' )\nrobot_inverse(tmp_dir / 'robot_inverse')",
+    "crumbs": [
+      "Industrial Robot Dataset"
+    ]
+  },
+  {
+    "objectID": "quadrotor_pi.html",
+    "href": "quadrotor_pi.html",
+    "title": "Quadrotor PI Dataset",
+    "section": "",
+    "text": "source\n\nquad_pi\n\n quad_pi (save_path:pathlib.Path, force_download:bool=False,\n          remove_download:bool=False)\n\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nsave_path\nPath\n\ndirectory the files are written to, created if it does not exist\n\n\nforce_download\nbool\nFalse\nforce download the dataset\n\n\nremove_download\nbool\nFalse\nremove downloaded zip/extracted bags afterwards\n\n\n\n\ntmp_dir = Path('./tmp')\nquad_pi(tmp_dir / 'quad_pi',force_download=True)\n\nCached downloading...\nFrom (original): https://drive.google.com/uc?id=1b1PFSBlKTdrlTIurYNpTJWWEx1KIJzuR\nFrom (redirected): https://drive.google.com/uc?id=1b1PFSBlKTdrlTIurYNpTJWWEx1KIJzuR&confirm=t&uuid=4776342b-94dc-4f24-bcee-eba9d763ee88\nTo: /Users/daniel/Library/Application Support/nonlinear_benchmarks/Quadrotor_pi/bags.zip\n100%|██████████| 1.02G/1.02G [01:49&lt;00:00, 9.34MB/s]",
+    "crumbs": [
+      "Quadrotor PI Dataset"
+    ]
+  },
+  {
+    "objectID": "broad.html",
+    "href": "broad.html",
+    "title": "Berlin Robust Orientation Estimation Assessment Dataset (BROAD)",
+    "section": "",
+    "text": "source\n\nbroad\n\n broad (save_path:pathlib.Path, force_download:bool=True)\n\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nsave_path\nPath\n\ndirectory the files are written to, created if it does not exist\n\n\nforce_download\nbool\nTrue\nforce download the dataset\n\n\n\n\ntmp_dir = Path('./tmp')\nbroad(tmp_dir / 'broad')",
+    "crumbs": [
+      "Berlin Robust Orientation Estimation Assessment Dataset (BROAD)"
+    ]
+  }
+]
