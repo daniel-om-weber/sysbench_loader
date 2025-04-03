@@ -179,9 +179,9 @@ def processBag(path):
   inertia = np.array([0.000601, 0.000589, 0.001076])
 
   # load dataframes
-  df_odom = parseBag('/dragonfly17/odom', path)
-  df_imu = parseBag('/dragonfly17/imu', path)
-  df_motor = parseBag('/dragonfly17/motor_rpm', path)
+  df_odom = parseBag('/dragonfly17/odom', str(path))
+  df_imu = parseBag('/dragonfly17/imu', str(path))
+  df_motor = parseBag('/dragonfly17/motor_rpm', str(path))
 
   # compute time
 #   t_odom = df_odom.apply(lambda r: rospy.Time(r["header.stamp.secs"], r["header.stamp.nsecs"]).to_sec(), axis=1)
@@ -289,26 +289,30 @@ def extract_hdf_from_bag(bag_path,save_path):
 
 # %% ../nbs/05_quadrotor_pi.ipynb 5
 def quad_pi(
-        save_path: Path, #directory the files are written to, created if it does not exist
+        save_path: Path, # directory the files are written to, created if it does not exist
         force_download: bool = False, # force download the dataset
-        remove_download = False
+        remove_download: bool = False # remove downloaded zip/extracted bags afterwards
 ):
     save_path = Path(save_path)
+    save_path.mkdir(parents=True, exist_ok=True)
 
-
-    download_dir = Path(get_tmp_benchmark_directory()) / 'Quadrotor_pi/' 
-    os.makedirs(download_dir, exist_ok=True)
-
+    download_dir = Path(get_tmp_benchmark_directory()) / 'Quadrotor_pi/'
+    download_dir.mkdir(parents=True, exist_ok=True)
+    zip_target_path = download_dir / 'bags.zip'
     url = 'https://drive.google.com/file/d/1b1PFSBlKTdrlTIurYNpTJWWEx1KIJzuR/view?usp=sharing'
-    gdown.cached_download(url, str(download_dir / 'bags.zip'), postprocess=gdown.extractall,fuzzy=True,force=force_download)
 
-    bag_paths = glob.glob(str(download_dir / "*.bag"))
-    for bag_path in bag_paths:
-        f_name = Path(bag_path).stem
-        hdf_path = save_path / get_parent_dir(f_name)
-        os.makedirs(hdf_path, exist_ok=True)
-        
-        extract_hdf_from_bag(bag_path,hdf_path)
+    if force_download and zip_target_path.is_file():
+        os.remove(zip_target_path) # Remove existing file to force re-download
+
+    gdown.cached_download(
+        url, str(zip_target_path), postprocess=gdown.extractall, fuzzy=True
+    )
+
+    for bag_path_str in glob.glob(str(download_dir / "*.bag")):
+        bag_path = Path(bag_path_str)
+        hdf_dir = save_path / get_parent_dir(bag_path.stem)
+        hdf_dir.mkdir(parents=True, exist_ok=True)
+        extract_hdf_from_bag(bag_path, hdf_dir)
 
     if remove_download:
         shutil.rmtree(download_dir)
